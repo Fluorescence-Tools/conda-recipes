@@ -1,0 +1,28 @@
+package:
+  name: mdtraj_fps
+  version: "0.0.1a"
+
+source:
+  git_tag: v0.0.1
+  git_url: https://github.com/Fluorescence-Tools/mdtraj_fps.git
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - cython
+    - numpy
+
+  run:
+    - python
+    - mdtraj
+    - numpy
+
+test:
+  imports:
+    - mdtraj_fps
+
+about:
+  home: https://github.com/Fluorescence-Tools/
+  license: LGPL 2.1
+  license_file: LICENSE
