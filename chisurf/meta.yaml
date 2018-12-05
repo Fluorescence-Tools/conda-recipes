@@ -5,9 +5,13 @@ package:
 
 source:
   #git_rev: 0.0.8
-  #git_url: https://github.com/Fluorescence-Tools/avtraj.git
-  #fn: C:/Users/thoma/PycharmProjects/ChiSurf_current/build
-  path: ../../ChiSurf_current
+  #git_url: https://github.com/Fluorescence-Tools/ChiSurf.git
+  path: ../../ChiSurf
+
+build:
+  entry_points:
+    - chisurf = chisurf:gui
+  osx_is_app: True
 
 requirements:
   build:
@@ -17,28 +21,30 @@ requirements:
     - numpy
   run:
     - python {{ python }}
-    - numpy
-    - pyqt>=5.6.0
     - pyyaml
     - python-slugify
+    - numpy
     - numba
-    - matplotlib
     - scipy
     - sympy
     - emcee
     - numexpr
     - pytables
-    - pandas
     - mdtraj
     - ipython
+    - matplotlib
+    - pyqt>=5.6.0
     - pyqtgraph
     - qtconsole
     - qscintilla2
     - pyopengl
+
 app:
-    entry: mfm_gui . [win]
-    entry: mfm_gui . [linux]
-    
+    entry: chisurf
+    summary: Analysis tool for time-resolved fluorescecne data
+    type: desk
+    icon: logo.png
+
 #test:
 #  imports:
 #    - mdtraj
@@ -50,8 +56,8 @@ app:
 #    - 
 
 about:
-  home: https://github.com/Fluorescence-Tools/avtraj
-  license: LGPL2.1
+  home: https://github.com/Fluorescence-Tools/ChiSurf
+  license: GPL2.1
   license_file: LICENSE
   summary: ChiSurf is an interactive global analysis software for time-resolved fluorescence data
   description: ChiSurf is an interactive analysis software for time-resolved fluorescence data.
