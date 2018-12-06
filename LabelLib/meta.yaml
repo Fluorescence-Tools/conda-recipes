@@ -1,12 +1,12 @@
 package:
-  name: chisurf
-  version: "2018.11.30"
+  name: labellib
+  version: "2018.12.5"
 
 source:
   #git_tag: 2018.11.30pre3
   # Something is wrong in the way the CMake file processes the GIT version tag.
   # Hence, git_tag does not work (we can only build the most recent head)
-  git_url: https://github.com/Fluorescence-Tools/ChiSurf.git
+  git_url: https://github.com/Fluorescence-Tools/LabelLib.git
 
 requirements:
   host:
@@ -22,6 +22,9 @@ requirements:
   run:
     - python {{ python }}
     - {{ pin_compatible('numpy') }}
+
+#build:
+#  script: python setup.py bdist_wheel
 
 test:
   imports:
