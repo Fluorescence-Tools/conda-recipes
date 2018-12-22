@@ -41,9 +41,13 @@ requirements:
 
 app:
     entry: chisurf
-    summary: Analysis tool for time-resolved fluorescecne data
+    summary: Analysis tool for time-resolved fluorescence data
     type: desk
     icon: logo.png
+
+outputs:
+    - type: wheel
+    - name: chisurf
 
 #test:
 #  imports:
