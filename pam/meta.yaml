@@ -1,0 +1,34 @@
+# https://github.com/conda/conda-docs/blob/master/docs/source/user-guide/tutorials/build-apps.rst
+package:
+  name: pam
+  version: {{ GIT_DESCRIBE_TAG }}
+
+source:
+  git_url: https://gitlab.com/PAM-PIE/PAM.git
+  git_tag: develop
+
+build:
+  number: {{ GIT_BUILD_STR }}
+
+requirements:
+  build:
+    - python {{ python }}
+    - wget
+    - git
+  run:
+
+app:
+    entry: pam
+    summary: A software package for confocal fluorescence microscopy
+    type: desk
+    icon: logo.png
+
+about:
+  home: https://gitlab.com/PAM-PIE
+  license: GPL3
+  license_file: LICENSE.md
+  summary: A software package for confocal fluorescence microscopy
+  description: >
+    PAM is a MATLAB based analysis GUI software package for confocal fluorescence microscopy
+    supporting Pulsed Interleaved Excitation (PIE)
+

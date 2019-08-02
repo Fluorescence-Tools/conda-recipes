@@ -1,31 +1,30 @@
 package:
   name: labellib
-  version: "2018.12.12"
+  version: {{ GIT_DESCRIBE_TAG }}
 
 source:
-  #git_tag: 2018.11.30pre3
-  # Something is wrong in the way the CMake file processes the GIT version tag.
-  # Hence, git_tag does not work (we can only build the most recent head)
   git_url: https://github.com/Fluorescence-Tools/LabelLib.git
 
+build:
+    number: {{ GIT_DESCRIBE_NUMBER|int }}
+    string: np{{ CONDA_NPY }}py{{ CONDA_PY }}_{{ GIT_BUILD_STR }}
+
 requirements:
-  host:
-    - python {{ python }}
-    - setuptools
-    - numpy
   build:
-    - python
-    - numpy
+    #- {{ compiler('cxx') }}    
+    - cmake
     - eigen
     - pybind11
-    - sphinx
+    - python {{ python }}
+    - setuptools
+    - numpy >=1.10
+    - libcxx
+  host:
+    - python {{ python }}
+    - numpy >=1.10
   run:
     - python {{ python }}
     - {{ pin_compatible('numpy') }}
-
-#outputs:
-#    - type: wheel
-#    - name: labellib
 
 test:
   imports:

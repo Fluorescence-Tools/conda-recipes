@@ -4,11 +4,12 @@ package:
   version: "2018.12.1"
 
 source:
-  #git_rev: 0.0.8
-  #git_url: https://github.com/Fluorescence-Tools/ChiSurf.git
-  path: ../../ChiSurf
+  #git_rev: 18.9.18
+  git_url: https://github.com/Fluorescence-Tools/ChiSurf.git
 
 build:
+  number: {{ GIT_DESCRIBE_NUMBER|int }}
+  string: np{{ CONDA_NPY }}py{{ CONDA_PY }}_{{ GIT_BUILD_STR }}
   entry_points:
     - chisurf = chisurf:gui
   osx_is_app: True
@@ -17,7 +18,7 @@ requirements:
   build:
     - python {{ python }}
     - setuptools
-    - cython
+    - cython=0.24
     - numpy
   run:
     - python {{ python }}
@@ -30,7 +31,7 @@ requirements:
     - emcee
     - numexpr
     - pytables
-    - mdtraj
+    - mdtraj=1.7.2
     - ipython
     - matplotlib
     - pyqt>=5.6.0
@@ -38,6 +39,7 @@ requirements:
     - qtconsole
     - qscintilla2
     - pyopengl
+    - python-docx
 
 app:
     entry: chisurf
@@ -49,20 +51,10 @@ outputs:
     - type: wheel
     - name: chisurf
 
-#test:
-#  imports:
-#    - mdtraj
-#    - numba
-#    - LabelLib
-#    - numpy
-#    #- pyopencl
-#    #- cudatoolkit
-#    - 
-
 about:
   home: https://github.com/Fluorescence-Tools/ChiSurf
   license: GPL2.1
   license_file: LICENSE
-  summary: ChiSurf is an interactive global analysis software for time-resolved fluorescence data
+    summary: ChiSurf is an interactive global analysis software for time-resolved fluorescence data
   description: ChiSurf is an interactive analysis software for time-resolved fluorescence data.
 
