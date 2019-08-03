@@ -1,22 +1,48 @@
 #!/usr/bin/env bash
 #!/usr/bin/bash
-mkdir build
-mcc -o PAM -W main:PAM -T link:exe -d build -v Launcher.m -a ./functions/Custom_Read_Ins -a ./images -a Models -a ./functions/bfmatlab/bioformats_package.jar -I "functions" -I "functions/BurstBrowser" -I "functions/BurstBrowser/colormaps" -I "functions/BurstBrowser/kinetic_consistency_check" -I "functions/BurstBrowser/regression" -I "functions/BurstBrowser/unimplemented" -I "functions/Custom_Read_Ins" -I "functions/FCSFit" -I "functions/GUI" -I "functions/MEXfiles" -I "functions/MIA" -I "functions/MIA/RICSPE" -I "functions/MIA/RICSPE/Profiles" -I "functions/MIA/ReadIn" -I "functions/PAM" -I "functions/PDAFit"  -I "functions/PDAFit/dynamic_sim" -I "functions/PDAFit/likelihoods_2C" -I "functions/PDAFit/randist" -I "functions/PDAFit/randist/specfunc" -I "functions/PDAFit/randist/sys" -I "functions/Phasor" -I "functions/TauFit" -I "functions/bfmatlab" -I "functions/readin"  -I "functions/tools" -I "functions/tools/conversion" -I "functions/tools/conversion/excel" -I "functions/tools/conversion/measures" -I "functions/tools/conversion/temperature" -I "functions/tools/file operations" -I "functions/tools/java"
-cd build
 
 ######################################
 # Install MATLAB Runtime engine
 # TODO: manage that only the minimum needed parts of the MATLAB Runtime engine are installed
 
-# Get the Runtime
-mkdir temp
-#wget http://ssd.mathworks.com/supportfiles/downloads/R2019a/Release/4/deployment_files/installer/complete/glnxa64/MATLAB_Runtime_R2019a_Update_4_glnxa64.zip
-cp /home/thomas/temp/MATLAB_Runtime_*_glnxa64.zip ./temp/
-cd temp
-unzip MATLAB_Runtime_*_glnxa64.zip
-cd ..
+# check if the runtime is installed
+MATLAB_RUNTIME_PATH=/Applications/MATLAB/MATLAB_Runtime/v94/
+if [ -d "$MATLAB_RUNTIME_PATH" ]
+    then
+        echo "MATLAB runtime at $FILE exists."
+    else
+        # Get the Runtime
+        echo "Installing MATLAB runtime..."
 
-mkdir runtime
-./temp/install -agreeToLicense yes -mode silent -destinationFolder "$PWD"/runtime
-rm -rf temp
-cd ..
+        mkdir temp
+        cd temp
+
+        curl http://ssd.mathworks.com/supportfiles/downloads/R2018a/deployment_files/R2018a/installers/maci64/MCR_R2018a_maci64_installer.dmg.zip -o MATLAB_runtime.zip
+
+        unzip MATLAB_runtime.zip
+
+        hdiutil attach -quiet MCR_R*.dmg
+
+        /Volumes/MCR_R*/InstallForMacOSX.app/Contents/MacOS/InstallForMacOSX -agreeToLicense yes -mode silent -destinationFolder /Applications/MATLAB/MATLAB_Runtime/
+
+        hdiutil detach -quiet /Volumes/MCR_R*
+
+        cd ..
+        rm -rf temp
+fi
+
+
+# check if environment variable DYLD_LIBRARY_PATH is set
+if [ -z "$DYLD_LIBRARY_PATH" ]
+    then
+        # it's not set
+        echo "Setting up DYLD_LIBRARY_PATH for MATLAB runtime in $MATLAB_RUNTIME_PATH"
+        echo '' >> ~/.bash_profile
+        echo '# MATLAB runtime path' >> ~/.bash_profile
+        echo "export DYLD_LIBRARY_PATH='/Applications/MATLAB/MATLAB_Runtime/v96/runtime/maci64:/Applications/MATLAB/MATLAB_Runtime/v96/sys/os/maci64:/Applications/MATLAB/MATLAB_Runtime/v96/bin/maci64:/Applications/MATLAB/MATLAB_Runtime/v96/extern/bin/maci644'" >> ~/.bash_profile
+fi
+                    
+# unpack and copy PAM
+cp -Rf PAM.app /Applications/
+
+echo "PAM was installed to /Applications."
