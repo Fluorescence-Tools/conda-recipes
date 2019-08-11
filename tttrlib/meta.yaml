@@ -34,3 +34,9 @@ about:
   description: |
     tttrlib C++ library including Python wrapper to read time-tagged
     time resolved data files.
+  doc_url: https://tpeulen.github.io/tttrlib/
+
+extra:
+  recipe-maintainers:
+    # GitHub IDs for maintainers of the recipe.
+    - tpeulen

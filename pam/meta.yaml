@@ -28,4 +28,8 @@ about:
   summary: A software package for confocal fluorescence microscopy
   description: >
     PAM is a MATLAB based analysis GUI software package for confocal fluorescence microscopy and spectroscopy wit ha focus on Pulsed Interleaved Excitation (PIE)
+  doc_url: https://pam.readthedocs.io
 
+extra:
+  recipe-maintainers:
+    - AndersBarth
