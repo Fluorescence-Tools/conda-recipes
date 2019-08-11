@@ -1,0 +1,52 @@
+package:
+  name: quickfit3
+  version: 4467
+
+source:
+  git_url: https://github.com/jkriege2/QuickFit3.git
+
+build:
+    number: 1
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - qt =5.6.2
+    - freeglut
+    - zlib
+    - pkg-config                     # [linux]
+    - mesalib                        # [linux]
+    - libglu                         # [linux]
+    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - {{ cdt('mesa-dri-drivers') }}  # [linux]
+    - {{ cdt('libselinux') }}        # [linux]
+    - {{ cdt('libxdamage') }}        # [linux]
+    - {{ cdt('libxxf86vm') }}        # [linux]
+  host:
+    - xorg-libxfixes                 # [linux]
+    - libglu                         # [linux]
+    - xorg-libx11                    # [linux]
+    - xorg-libxext                   # [linux]
+  run:
+    - libglu                         # [linux]
+    - xorg-libx11                    # [linux]
+    - xorg-libxext                   # [linux]
+
+about:
+  home: https://github.com/jkriege2/QuickFit3
+  license: GPL v3
+  license_family: GPL
+  summary: A data evaluation package for (imaging) fluorescence correlation spectroscopy and other biophysical methods
+  description: |
+    QuickFit 3 is a data evaluation software for FCS and imagingFCS (imFCS)
+    measurements, developed in the group B040 (Prof. Jörg Langowski) at the
+    German Cancer Research Center (DKFZ).
+
+    Actually QuickFit 3 itself is a project manager and all functionality is
+    added as plugins. A set of tested plugins for FCS, imagingFCS and some
+    microscopy-related image processing tasks is supplied together with
+    the software.
+extra:
+  recipe-maintainers:
+    - tpeulen
