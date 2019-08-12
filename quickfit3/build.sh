@@ -28,7 +28,7 @@ chmod +x build_dependencies.sh
 ./build_depend.sh
 
 cd "$SRC_DIR"
-qmake quickfit3.pro "CONFIG+=release" "QMAKE_LIBDIR+=$SRC_DIR/output/"
+qmake quickfit3.pro "CONFIG+=release"
 
 cp "$RECIPE_DIR/make.sh" "$SRC_DIR/make.sh"
 chmod +x "$SRC_DIR/make.sh"

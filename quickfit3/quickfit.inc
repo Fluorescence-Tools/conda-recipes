@@ -23,7 +23,7 @@ QF3CONFIG+=nospecialdrivers
 # if "nospecialdrivers" is not activated, this can be used to selectively deactive the ANDOR driver
 QF3CONFIG+=noandor
 # switch off some special plugins (e.g. pre-publication versions of imfccsfit)
-#QF3CONFIG+=nospecials
+QF3CONFIG+=nospecials
 # comment out, to compile plugins that depend on the NI-DAQmx driver
 QF3CONFIG+=nonidaqmx
 # activate special hardware drivers for the FFM!

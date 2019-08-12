@@ -10,7 +10,7 @@ child = pexpect.spawn('./build_dependencies.sh')
 answers_linux = [
     ["Do you want to build keep the build directories (y/n)?", "n"],
     ["How many parallel builds do you want to use in make (1/2/3/...)?", "4"],
-    ["Do you want to use more agressive optimizations for the built libraries (y/n/M)? M: no optimizations, use on MacOSX)", "y"]
+    ["Do you want to use more agressive optimizations for the built libraries (y/n/M)? M: no optimizations, use on MacOSX)", "y"],
     ["Do you want to optimize libraries for your local machine? (y/n)?", "n"],
     ["Do you want to use OpenMP? (y/n)?", "n"],
     ["Do you need the -fPIC flags? (y/n)?", "y"],
@@ -34,7 +34,7 @@ answers_linux = [
 answers_macos = [
     ["Do you want to build keep the build directories (y/n)?", "n"],
     ["How many parallel builds do you want to use in make (1/2/3/...)?", "4"],
-    ["Do you want to use more agressive optimizations for the built libraries (y/n/M)? M: no optimizations, use on MacOSX)", "M"]
+    ["Do you want to use more agressive optimizations for the built libraries (y/n/M)? M: no optimizations, use on MacOSX)", "M"],
     ["Do you want to optimize libraries for your local machine? (y/n)?", "n"],
     ["Do you want to use OpenMP? (y/n)?", "n"],
     ["Do you need the -fPIC flags? (y/n)?", "y"],
@@ -58,7 +58,7 @@ answers_macos = [
 answers_windows = [
     ["Do you want to build keep the build directories (y/n)?", "n"],
     ["How many parallel builds do you want to use in make (1/2/3/...)?", "4"],
-    ["Do you want to use more agressive optimizations for the built libraries (y/n/M)? M: no optimizations, use on MacOSX)", "M"]
+    ["Do you want to use more agressive optimizations for the built libraries (y/n/M)? M: no optimizations, use on MacOSX)", "M"],
     ["Do you want to optimize libraries for your local machine? (y/n)?", "n"],
     ["Do you want to use OpenMP? (y/n)?", "n"],
     ["Do you need the -fPIC flags? (y/n)?", "n"],
@@ -90,6 +90,7 @@ else:
 
 
 for question, answer in answers:
+    print(question)
     child.expect(question)
     child.sendline(answer)
 
