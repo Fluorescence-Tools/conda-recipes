@@ -11,35 +11,24 @@ build:
 
 requirements:
   build:
-    - python {{ python }}
+    - python=3.7
     - setuptools
     - cython
     - numpy
   run:
-    - python {{ python }}
-    - pyyaml
-    - numpy
-    - numba
-    - scipy
-    - numexpr
-    - pytables
-    - mdtraj=1.7.2
-    - ipython
-    - guiqwt
+    - python=3.7
     - pyqt>=5.6.0
-    - pymol
-
-app:
-    entry: quest
-    summary: QuEst is a structure based fluorescence quenching estimator
-    type: desk
-    icon: logo.png
+    - numpy
+    - numexpr
+    - guiqwt
+    - pyopengl
+    - pymol-oss
 
 about:
   home: https://github.com/Fluorescence-Tools/ChiSurf
-  license: GPL3
+  license: MIT
   license_file: LICENSE
-  summary: QuEst is a structure based fluorescence quenching estimator
+  summary: QuEst is a protein structure based fluorescence quenching estimator
   description:
     QuEst is a structure based fluorescence quenching estimator that simulates dynamic
     quenching of fluorescence decays of dyes that are coupled to the surface of a proteins.
