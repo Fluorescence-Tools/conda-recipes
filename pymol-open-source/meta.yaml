@@ -1,0 +1,74 @@
+package:
+  name: pymol-oss
+  version: {{ GIT_DESCRIBE_TAG }}
+
+source:
+  git_url: https://github.com/schrodinger/pymol-open-source.git
+
+requirements:
+
+  build:
+    - git
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - python {{ python }}
+    - pyopengl
+    - glew
+    - freeglut
+    - pmw
+    - libpng
+    - freetype
+    - libxml2
+    - msgpack-c
+    - mmtf-python
+    - qt
+    - glm
+    - catch2
+    - pkg-config                     # [linux]
+    - mesalib                        # [linux]
+    - libglu                         # [linux]
+    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - {{ cdt('mesa-dri-drivers') }}  # [linux]
+    - {{ cdt('libselinux') }}        # [linux]
+    - {{ cdt('libxdamage') }}        # [linux]
+    - {{ cdt('libxxf86vm') }}        # [linux]
+  run:
+    - python {{ python }}
+    - python {{ python }}
+    - pyopengl
+    - glew
+    - freeglut
+    - pmw
+    - libpng
+    - freetype
+    - libxml2
+    - msgpack-c
+    - mmtf-python
+    - qt =5.6.2
+    - glm
+    - catch2
+  host:
+    - python {{ python }}
+    - freetype
+    - libxml2
+    - glew
+    - libglu
+    - freeglut>=3
+    - libpng
+    - {{ cdt('mesa-libgl') }}
+    - {{ cdt('libxxf86vm') }}
+
+about:
+  home: https://github.com/schrodinger/pymol-open-source
+  summary: PyMOL is a molecular visualization system.
+  description: |
+    PyMOL is computer software, a molecular visualization system created by Warren Lyford DeLano. It is user-sponsored,
+    open-source software, released under the Python License. It was commercialized initially by DeLano Scientific LLC,
+    which was a private software company dedicated to creating useful tools that become universally accessible to
+    scientific and educational communities. It is currently commercialized by Schrödinger, Inc. PyMOL can produce
+    high-quality 3D images of small molecules and biological macromolecules, such as proteins. According to the original
+    author, by 2009, almost a quarter of all published images of 3D protein structures in the scientific literature were
+    made using PyMOL.
+extra:
+  recipe-maintainers:
+    - tpeulen
