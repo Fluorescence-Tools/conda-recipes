@@ -23,6 +23,8 @@ requirements:
     - guiqwt
     - pyopengl
     - pymol-oss
+    - libstdcxx-ng # [linux]
+    - labellib
 
 about:
   home: https://github.com/Fluorescence-Tools/ChiSurf

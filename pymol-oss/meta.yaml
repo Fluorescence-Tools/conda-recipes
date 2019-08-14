@@ -39,13 +39,14 @@ requirements:
     - freetype
     - msgpack-c
     - mmtf-python
-    - qt =5.6.2
+    - pyqt
     - glm
     - catch2
   host:
     - python {{ python }}
     - freetype
     - glew
+    - pyqt
     - libglu # [linux]
     - freeglut
     - libpng
