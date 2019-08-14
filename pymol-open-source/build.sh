@@ -4,5 +4,4 @@ git clone https://github.com/msgpack/msgpack-c.git msgpack
 mv glm_source/glm ./include
 mv mmtf-cpp/include/* ./include/
 mv msgpack/include/* ./include/
-export PATH="$PATH:$SRC_DIR/glm"
-$PYTHON setup.py install --prefix="$PREFIX" --use-msgpackc c++11
+$PYTHON setup.py install --prefix="$PREFIX" --use-msgpackc c++11 --no-libxml

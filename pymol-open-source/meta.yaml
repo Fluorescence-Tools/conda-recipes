@@ -15,10 +15,8 @@ requirements:
     - pyopengl
     - glew
     - freeglut
-    - pmw
     - libpng
     - freetype
-    - libxml2
     - msgpack-c
     - mmtf-python
     - qt
@@ -34,14 +32,11 @@ requirements:
     - {{ cdt('libxxf86vm') }}        # [linux]
   run:
     - python {{ python }}
-    - python {{ python }}
     - pyopengl
     - glew
     - freeglut
-    - pmw
     - libpng
     - freetype
-    - libxml2
     - msgpack-c
     - mmtf-python
     - qt =5.6.2
@@ -50,13 +45,12 @@ requirements:
   host:
     - python {{ python }}
     - freetype
-    - libxml2
     - glew
-    - libglu
-    - freeglut>=3
+    - libglu # [linux]
+    - freeglut
     - libpng
-    - {{ cdt('mesa-libgl') }}
-    - {{ cdt('libxxf86vm') }}
+    - {{ cdt('mesa-libgl') }} # [linux]
+    - {{ cdt('libxxf86vm') }} # [linux]
 
 about:
   home: https://github.com/schrodinger/pymol-open-source
