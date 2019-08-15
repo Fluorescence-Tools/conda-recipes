@@ -5,6 +5,9 @@ package:
 source:
   git_url: https://github.com/schrodinger/pymol-open-source.git
 
+build:
+  number: 1
+
 requirements:
 
   build:
@@ -19,8 +22,9 @@ requirements:
     - freetype
     - msgpack-c
     - mmtf-python
-    - qt
+    - qt >=5.9.0
     - glm
+    - pmw
     - catch2
     - pkg-config                     # [linux]
     - mesalib                        # [linux]
@@ -33,25 +37,34 @@ requirements:
   run:
     - python {{ python }}
     - pyopengl
+    - pmw
     - glew
     - freeglut
     - libpng
     - freetype
     - msgpack-c
     - mmtf-python
-    - pyqt
+    - qt >=5.9.0
+    - pyqt >=5.9.0
     - glm
     - catch2
   host:
     - python {{ python }}
     - freetype
     - glew
+    - qt
     - pyqt
     - libglu # [linux]
     - freeglut
     - libpng
     - {{ cdt('mesa-libgl') }} # [linux]
     - {{ cdt('libxxf86vm') }} # [linux]
+
+app:
+  entry: pymol
+  summary: PyMOL is a molecular visualization system.
+  type: desk
+  icon: icon.svg
 
 about:
   home: https://github.com/schrodinger/pymol-open-source
