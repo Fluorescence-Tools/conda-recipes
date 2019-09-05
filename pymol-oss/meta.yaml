@@ -1,9 +1,12 @@
+{% set version="v2.3.0" %}
+
 package:
   name: pymol-oss
-  version: {{ GIT_DESCRIBE_TAG }}
+  version: {{ version }}
 
 source:
   git_url: https://github.com/schrodinger/pymol-open-source.git
+  git_tag: {{ version }}
 
 build:
   number: 1
@@ -16,8 +19,8 @@ requirements:
     - {{ compiler('cxx') }}
     - python {{ python }}
     - pyopengl
+    - numpy
     - glew
-    - freeglut
     - libpng
     - freetype
     - msgpack-c
@@ -38,8 +41,8 @@ requirements:
     - python {{ python }}
     - pyopengl
     - pmw
+    - numpy
     - glew
-    - freeglut
     - libpng
     - freetype
     - msgpack-c
@@ -52,10 +55,10 @@ requirements:
     - python {{ python }}
     - freetype
     - glew
+    - numpy
     - qt
     - pyqt
     - libglu # [linux]
-    - freeglut
     - libpng
     - {{ cdt('mesa-libgl') }} # [linux]
     - {{ cdt('libxxf86vm') }} # [linux]
