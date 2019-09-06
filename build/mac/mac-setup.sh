@@ -7,7 +7,7 @@ fi
 
 CONDA_ROOT=/tmp/conda.$$
 
-# Make sure conda build environment isn't polluted by Homebrew
+# Make sure conda build environment isn'scripts_unused polluted by Homebrew
 (cd /usr/local && sudo mv lib lib.hide && sudo mv include include.hide && sudo mv bin bin.hide)
 
 # Make a clean conda build environment

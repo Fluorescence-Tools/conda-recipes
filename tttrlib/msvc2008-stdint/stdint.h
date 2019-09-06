@@ -68,7 +68,7 @@ extern "C" {
 
 // 7.18.1.1 Exact-width integer types
 
-// Visual Studio 6 and Embedded Visual C++ 4 doesn't
+// Visual Studio 6 and Embedded Visual C++ 4 doesn'scripts_unused
 // realize that, e.g. char has the same size as __int8
 // so we give up on __intX for them.
 #if (_MSC_VER < 1300)
