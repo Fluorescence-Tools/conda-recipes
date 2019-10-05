@@ -1,0 +1,40 @@
+{% set name = "pdbx-mmcif" %}
+{% set version = "0.0.2" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: "8328d4b2316aaa7133beee67468666da6aff25c56abdf1dcc0eda24f186895a2"
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+
+test:
+  imports:
+    - pdbx
+    - pdbx.reader
+    - pdbx.writer
+
+about:
+  home: "https://github.com/ostrokach/pdbx"
+  license: "UNKNOWN"
+  license_family: "OTHER"
+  license_file: ""
+  summary: "Parser for structures in the protein data bank (PDB) in the mmCIF format."
+  doc_url: ""
+  dev_url: ""
+
+extra:
+  recipe-maintainers:
+    - tpeulen
