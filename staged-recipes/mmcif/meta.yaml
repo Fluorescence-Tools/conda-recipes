@@ -19,6 +19,9 @@ requirements:
     - pip
     - python
     - six
+    - cmake
+    - flex
+    - bison
   run:
     - future
     - python

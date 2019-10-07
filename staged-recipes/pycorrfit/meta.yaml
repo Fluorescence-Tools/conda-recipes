@@ -5,30 +5,43 @@ package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
+#source:
+#  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+#  sha256: "946098511dbd9fda673ca527cbe00c0d2c59cfc602f21ec5ba2ae94be4a7761a"
+
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: "946098511dbd9fda673ca527cbe00c0d2c59cfc602f21ec5ba2ae94be4a7761a"
+  git_url: https://github.com/FCS-analysis/PyCorrFit.git
+  git_tag: "{{ version }}"
 
 build:
   number: 0
   entry_points:
     - pycorrfit=pycorrfit.gui.main:Main
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv "
 
 requirements:
-  host:
-    - lmfit >=0.9.2
-    - numpy >=1.14.2
-    - pip
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - git
     - python
+    - pip
+    - setuptools
+    - cython
+    - numpy >=1.14.2
+    - lmfit >=0.9.2
     - pyyaml >=3.12
     - scipy >=1.0.1
+    - pytest-runner
   run:
     - lmfit >=0.9.2
     - numpy >=1.14.2
     - python
     - pyyaml >=3.12
     - scipy >=1.0.1
+    - matplotlib >=2.2.2
+    - sympy >=1.1.1
+    - simplejson
+    - wxpython
 
 test:
   imports:
@@ -49,10 +62,9 @@ about:
   home: "https://github.com/FCS-analysis/PyCorrFit"
   license: "GPL v2"
   license_family: "GPL2"
-  license_file: ""
   summary: "Scientific tool for fitting correlation curves on a logarithmic plot."
-  doc_url: ""
-  dev_url: ""
+  doc_url: "https://github.com/FCS-analysis/PyCorrFit/wiki/PyCorrFit_doc.pdf"
+  dev_url: "https://github.com/FCS-analysis/PyCorrFit"
 
 extra:
   recipe-maintainers:

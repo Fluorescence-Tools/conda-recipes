@@ -78,6 +78,7 @@ about:
     high-quality 3D images of small molecules and biological macromolecules, such as proteins. According to the original
     author, by 2009, almost a quarter of all published images of 3D protein structures in the scientific literature were
     made using PyMOL.
+
 extra:
   recipe-maintainers:
     - tpeulen
