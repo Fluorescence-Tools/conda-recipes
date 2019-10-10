@@ -21,6 +21,7 @@ requirements:
     - pyopengl
     - numpy
     - glew
+    - pmw
     - libpng
     - freetype
     - msgpack-c
@@ -38,8 +39,10 @@ requirements:
   run:
     - python {{ python }}
     - pyopengl
+    - pyqt >=5.9.0
     - numpy
     - glew
+    - pmw
     - libpng
     - freetype
     - msgpack-c
@@ -50,6 +53,7 @@ requirements:
     - pyopengl
     - numpy
     - glew
+    - pmw
     - libpng
     - freetype
     - msgpack-c
@@ -58,7 +62,6 @@ requirements:
     - libglu # [linux]
     - {{ cdt('mesa-libgl') }} # [linux]
     - {{ cdt('libxxf86vm') }} # [linux]
-
 
 app:
   entry: pymol

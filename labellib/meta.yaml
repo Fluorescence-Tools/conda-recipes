@@ -4,6 +4,8 @@ package:
 
 source:
   git_url: https://github.com/Fluorescence-Tools/LabelLib.git
+  #git_url: ../../labellib
+  #git_tag: development
 
 build:
     number: {{ GIT_DESCRIBE_NUMBER|int }}
@@ -11,14 +13,12 @@ build:
 
 requirements:
   build:
-    #- {{ compiler('cxx') }}    
+    - python {{ python }}
     - cmake
     - eigen
     - pybind11
-    - python {{ python }}
     - setuptools
     - numpy >=1.10
-    - libcxx
   host:
     - python {{ python }}
     - numpy >=1.10
@@ -35,7 +35,8 @@ about:
   license: LGPL v2.1
   license_family: LGPL
   summary: Python bindings for LabelLib
-  description: LabelLib is a low-level C++ library for the simulation of small
+  description: >
+    LabelLib is a low-level C++ library for the simulation of small
     probes flexibly coupled to biomolecules for the development of higher-level
     applications and libraries. LabelLib can calculate the distribution of
     flexible labels around attachment points. Such probes are for instance dyes

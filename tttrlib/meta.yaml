@@ -19,15 +19,13 @@ requirements:
     - setuptools
     - numpy
     - swig
-    - hdf5=1.8.* [win]
-    - hdf5>1.8.* [linux]
+    - hdf5
     - cmake
     - sphinx
   run:
     - numpy
     - python {{ python }}
-    - hdf5=1.8.* [win]
-    - hdf5>1.8.* [linux]
+    - hdf5
 
 test:
   imports:
