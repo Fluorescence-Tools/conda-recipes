@@ -1,5 +1,5 @@
 {% set name = "tttrlib" %}
-{% set version = "0.0.7" %}
+{% set version = "0.0.8" %}
 
 package:
   name: "{{ name|lower }}"
@@ -8,24 +8,38 @@ package:
 source:
   git_url: https://github.com/fluorescence-tools/tttrlib.git
   git_rev: "{{ version }}"
+  #git_url: ../../tttrlib
+  #path: ../../tttrlib
 
 build:
     number: 0
     string: np{{ CONDA_NPY }}py{{ CONDA_PY }}_{{ GIT_BUILD_STR }}
 
 requirements:
-  build:
-    - python {{ python }}
+  host:
+    - python
     - setuptools
-    - numpy
-    - swig
-    - hdf5
+    - git
     - cmake
+    - swig
     - sphinx
-  run:
     - numpy
-    - python {{ python }}
-    - hdf5
+    - hdf5>=1.8.*
+    - openmp
+  build:
+    - {{ compiler('cxx') }}
+    - python
+    - cmake
+    - swig
+    - sphinx
+    - numpy
+    - hdf5>=1.8.*
+    - openmp
+  run:
+    - python
+    - vs2015_runtime # [win]
+    - numpy
+    - hdf5>=1.8.*
 
 test:
   imports:
@@ -33,7 +47,7 @@ test:
 
 about:
   home: https://github.com/tpeulen/tttrlib
-  license: Mozilla Public License 2.0 (MPL 2.0)
+  license: MPL 2.0
   summary: Python bindings for tttrlib
   description: |
     tttrlib C++ library including Python wrapper to read time-tagged
