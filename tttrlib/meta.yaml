@@ -7,7 +7,7 @@ package:
 
 source:
   git_url: https://github.com/fluorescence-tools/tttrlib.git
-  #git_tag: development
+  git_tag: development
   #git_rev: "{{ version }}"
   #git_url: ..
   #path: ..
