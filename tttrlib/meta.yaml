@@ -22,13 +22,13 @@ requirements:
     - python {{ python }}
     - setuptools
     - cmake
-    - sphinx
     - swig
     - numpy >=1.10
     - hdf5 >=1.8.*
     - openmp
   host:
     - python {{ python }}
+    - setuptools
     - numpy >=1.10
     - hdf5 >=1.8.*
     - openmp
