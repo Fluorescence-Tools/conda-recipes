@@ -22,6 +22,7 @@ requirements:
     - python {{ python }}
     - setuptools
     - cmake
+    - numpy >=1.10
     - swig
   host:
     - python {{ python }}
