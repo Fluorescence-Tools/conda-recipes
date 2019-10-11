@@ -16,27 +16,22 @@ build:
     string: np{{ CONDA_NPY }}py{{ CONDA_PY }}_{{ GIT_BUILD_STR }}
 
 requirements:
-  host:
-    - git
-    - python {{ python }}
-    - setuptools
-    - cmake
-    - swig
-    - sphinx
-    - numpy >=1.10
-    - hdf5 >=1.8.*
-    - openmp
-    - sphinx
   build:
+    - git
     - {{ compiler('cxx') }}
     - python {{ python }}
     - setuptools
     - cmake
+    - sphinx
     - swig
     - numpy >=1.10
     - hdf5 >=1.8.*
     - openmp
-    - sphinx
+  host:
+    - python {{ python }}
+    - numpy >=1.10
+    - hdf5 >=1.8.*
+    - openmp
   run:
     - python {{ python }}
     - vs2015_runtime # [win]
