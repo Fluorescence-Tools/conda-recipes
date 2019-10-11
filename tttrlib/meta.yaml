@@ -34,16 +34,16 @@ requirements:
     - openmp
   run:
     - python {{ python }}
-    - vs2015_runtime # [win]
     - {{ pin_compatible('numpy') }}
-    - hdf5>=1.8.*
+    - vs2015_runtime # [win]
+    - hdf5 >=1.8.*
 
 test:
   imports:
     - tttrlib
 
 about:
-  home: https://github.com/tpeulen/tttrlib
+  home: https://github.com/fluorescence-tools/tttrlib
   license: MPL 2.0
   summary: Python bindings for tttrlib
   description: |
