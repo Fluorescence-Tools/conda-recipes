@@ -17,28 +17,30 @@ build:
 
 requirements:
   host:
-    - python
-    - setuptools
     - git
+    - python {{ python }}
+    - setuptools
     - cmake
     - swig
     - sphinx
-    - numpy
-    - hdf5>=1.8.*
+    - numpy >=1.10
+    - hdf5 >=1.8.*
     - openmp
+    - sphinx
   build:
     - {{ compiler('cxx') }}
-    - python
+    - python {{ python }}
+    - setuptools
     - cmake
     - swig
-    - sphinx
-    - numpy
-    - hdf5>=1.8.*
+    - numpy >=1.10
+    - hdf5 >=1.8.*
     - openmp
+    - sphinx
   run:
-    - python
+    - python {{ python }}
     - vs2015_runtime # [win]
-    - numpy
+    - {{ pin_compatible('numpy') }}
     - hdf5>=1.8.*
 
 test:
