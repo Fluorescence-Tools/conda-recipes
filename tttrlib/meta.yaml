@@ -24,12 +24,12 @@ requirements:
     - cmake
     - numpy >=1.10
     - swig
+    - openmp
   host:
     - python {{ python }}
     - setuptools
     - numpy >=1.10
     - hdf5 >=1.8.*
-    - openmp
   run:
     - python {{ python }}
     - {{ pin_compatible('numpy') }}
