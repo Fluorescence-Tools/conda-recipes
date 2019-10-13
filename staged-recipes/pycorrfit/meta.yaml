@@ -5,49 +5,50 @@ package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
-#source:
-#  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-#  sha256: "946098511dbd9fda673ca527cbe00c0d2c59cfc602f21ec5ba2ae94be4a7761a"
-
 source:
-  git_url: https://github.com/FCS-analysis/PyCorrFit.git
-  git_tag: "{{ version }}"
+  url: https://github.com/FCS-analysis/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: d833bbee2d3864b23b95a1502e528ad5dec01fbeee85d7d57a1f67152f91d887
 
 build:
   number: 0
   entry_points:
     - pycorrfit=pycorrfit.gui.main:Main
+  skip: true  # [osx]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - git
-    - python
+  host:
+    - python {{ python }}
     - pip
     - setuptools
+    - simplejson
     - cython
-    - numpy >=1.14.2
+    - pytest-runner
+    - numpy
     - lmfit >=0.9.2
     - pyyaml >=3.12
     - scipy >=1.0.1
-    - pytest-runner
+    - matplotlib >=2.2.2
+    - sympy >=1.1.1
+    - wxpython
   run:
+    - python {{ python }}
+    - numpy
     - lmfit >=0.9.2
-    - numpy >=1.14.2
-    - python
     - pyyaml >=3.12
     - scipy >=1.0.1
     - matplotlib >=2.2.2
     - sympy >=1.1.1
     - simplejson
     - wxpython
+    - vs2015_runtime # [win]
 
 test:
   imports:
     - pycorrfit
-    - pycorrfit.gui
-    - pycorrfit.gui.tools
     - pycorrfit.models
     - pycorrfit.readfiles
     - pycorrfit.readfiles.read_pt3_scripts
