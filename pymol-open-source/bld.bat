@@ -7,4 +7,4 @@ move glm_source/glm ./include
 git clone https://github.com/msgpack/msgpack-c.git msgpack
 move msgpack/include/* ./include/
 
-python setup.py install --prefix="%PREFIX" --use-msgpackc no --no-libxml
+"%PYTHON%" setup.py install --prefix="%PREFIX%" --use-msgpackc no --no-libxml
