@@ -6,25 +6,31 @@ package:
   version: "{{ version }}"
 
 source:
-  git_url: https://github.com/Fluorescence-Tools/ChiSurf.git
-  git_rev: "{{ version }}"
+  #git_url: https://github.com/Fluorescence-Tools/ChiSurf.git
+  #git_rev: "{{ version }}"
+  git_url: ../../chisurf
 
 build:
-  number: {{ GIT_DESCRIBE_NUMBER|int }}
+  number: 0
   string: np{{ CONDA_NPY }}py{{ CONDA_PY }}_{{ GIT_BUILD_STR }}
   entry_points:
-    - chisurf=chisurf:gui
+    - chisurf=chisurf.gui:gui
 
 requirements:
   build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - git
+  host:
     - python {{ python }}
     - setuptools
-    - cython=0.24
+    - cython
     - numpy
+    - pyyaml
   run:
     - python {{ python }}
-    - pyyaml
     - python-slugify
+    - pyyaml
     - numpy
     - numba
     - scipy
@@ -32,19 +38,24 @@ requirements:
     - emcee
     - numexpr
     - pytables
-    - mdtraj=1.7.2
+    - hdf5
+    - mdtraj
     - ipython
     - matplotlib
     - pyqt>=5.6.0
     - pyqtgraph
-    - qtconsole
     - qscintilla2
     - pyopengl
+    - qtconsole
     - python-docx
-
-outputs:
-    - type: wheel
-    - name: chisurf
+    - labellib
+    - deprecation
+    - pyopencl
+    - guiqwt
+    - progressbar2
+    - qtpy
+    - qdarkstyle
+    - mrcfile
 
 about:
   home: https://github.com/Fluorescence-Tools/ChiSurf
