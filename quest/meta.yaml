@@ -1,13 +1,18 @@
+{% set name = "quest" %}
+{% set version="191013" %}
+
 package:
-  name: quest
-  version: "2019.08.11"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  git_url: https://github.com/Fluorescence-Tools/quest.git
+  url: https://github.com/fluorescence-tools/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: 58d592343b0552bd7fac56c09fe45e888bd3116cb5b33939c7409ae3ed8dd67e
 
 build:
-  number: {{ GIT_DESCRIBE_NUMBER|int }}
-  string: np{{ CONDA_NPY }}py{{ CONDA_PY }}_{{ GIT_BUILD_STR }}
+  number: 0
+  entry_points:
+    - quest=quest.quest_gui:start_gui
 
 requirements:
   build:
@@ -22,7 +27,7 @@ requirements:
     - numexpr
     - guiqwt
     - pyopengl
-    - pymol-oss
+    - pymol-open-source
     - libstdcxx-ng # [linux]
     - labellib
 
