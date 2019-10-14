@@ -1,19 +1,16 @@
 {% set name = "tttrlib" %}
+{% set version="0.0.9" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: {{ GIT_DESCRIBE_TAG }}
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  git_url: https://github.com/fluorescence-tools/tttrlib.git
-  #git_tag: development
-  #git_rev: "{{ version }}"
-  #git_url: ../../
-  #path: ..
+  url: https://github.com/fluorescence-tools/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: bc57aa9130c1d8039d2dfba1ee5422b29c737fd2b429e5ae9bfb1f4ad1613c90
 
 build:
     number: 0
-    string: np{{ CONDA_NPY }}py{{ CONDA_PY }}_{{ GIT_BUILD_STR }}
 
 requirements:
   build:
