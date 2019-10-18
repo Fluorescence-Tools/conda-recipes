@@ -1,30 +1,32 @@
+{% set name = "labellib" %}
+{% set version = "2018.12.12" %}
+
 package:
-  name: labellib
-  version: {{ GIT_DESCRIBE_TAG }}
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  git_url: https://github.com/Fluorescence-Tools/LabelLib.git
-  #git_url: ../../labellib
-  #git_tag: development
+  url: https://github.com/fluorescence-tools/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: 5150997099281ab722be67b6894905a9781937efe484dac22ad8969b9195eb52
 
 build:
-    number: {{ GIT_DESCRIBE_NUMBER|int }}
-    string: np{{ CONDA_NPY }}py{{ CONDA_PY }}_{{ GIT_BUILD_STR }}
+    number: 1
 
 requirements:
   build:
+    - {{ compiler('cxx') }}
     - python {{ python }}
     - cmake
     - eigen
     - pybind11
-    - setuptools
-    - numpy >=1.10
+    - numpy
   host:
     - python {{ python }}
-    - numpy >=1.10
+    - numpy
   run:
     - python {{ python }}
     - {{ pin_compatible('numpy') }}
+    - vs2015_runtime # [win]
 
 test:
   imports:
@@ -34,6 +36,7 @@ about:
   home: https://github.com/Fluorescence-Tools/LabelLib
   license: LGPL v2.1
   license_family: LGPL
+  license_file: LICENSE
   summary: Python bindings for LabelLib
   description: >
     LabelLib is a low-level C++ library for the simulation of small
@@ -68,5 +71,9 @@ about:
             Distance Determination of Nucleic Acids via Forster Resonance
             Energy Transfer - Implications of Dye Linker Length and Rigidity.
             Journal of the American Chemical Society 133(8) 2463-2480.
-            
+  doc_url: https://github.com/fluorescence-tools/labellib
 
+extra:
+  recipe-maintainers:
+    - tpeulen
+    - mdimura
