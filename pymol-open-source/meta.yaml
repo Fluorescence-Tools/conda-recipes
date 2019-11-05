@@ -14,6 +14,7 @@ build:
 
 requirements:
   build:
+    - python {{ python }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - pyopengl
@@ -22,8 +23,7 @@ requirements:
     - libpng
     - freetype
     - msgpack-c
-    - mmtf-python
-    - pyqt >=5.9.0
+    - pyqt
     - glm
     - pkg-config                     # [linux]
     - mesalib                        # [linux]
@@ -41,7 +41,6 @@ requirements:
     - libpng
     - freetype
     - msgpack-c
-    - mmtf-python
     - glm
     - libglu # [linux]
     - {{ cdt('mesa-libgl') }} # [linux]
@@ -49,13 +48,12 @@ requirements:
   run:
     - python {{ python }}
     - pyopengl
-    - pyqt >=5.9.0
+    - pyqt
     - numpy
     - glew
     - libpng
     - freetype
     - msgpack-c
-    - mmtf-python
     - glm
 
 app:
