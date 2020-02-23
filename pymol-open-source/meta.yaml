@@ -17,8 +17,8 @@ requirements:
     - python {{ python }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ pin_compatible('numpy') }}
     - pyopengl
-    - numpy
     - glew
     - libpng
     - freetype
@@ -35,8 +35,8 @@ requirements:
     - {{ cdt('libxxf86vm') }}        # [linux]
   host:
     - python {{ python }}
+    - {{ pin_compatible('numpy') }}
     - pyopengl
-    - numpy
     - glew
     - libpng
     - freetype
@@ -47,9 +47,9 @@ requirements:
     - {{ cdt('libxxf86vm') }} # [linux]
   run:
     - python {{ python }}
+    - {{ pin_compatible('numpy') }}
     - pyopengl
     - pyqt
-    - numpy
     - glew
     - libpng
     - freetype
