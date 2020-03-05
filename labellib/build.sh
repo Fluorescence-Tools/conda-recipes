@@ -1,5 +1,5 @@
 $PYTHON setup.py install --single-version-externally-managed --record=record.txt
-rm -r build
+rm -rf build
 mkdir build_lib
 cd build_lib
 cmake ..
