@@ -22,9 +22,9 @@ requirements:
     - glew
     - libpng
     - freetype
-    - msgpack-c
-    - pyqt
+    - pyqt >=5.13.1|<=5.12.1|5.9.2
     - glm
+    - boost 1.67.*
     - pkg-config                     # [linux]
     - mesalib                        # [linux]
     - libglu                         # [linux]
@@ -40,20 +40,18 @@ requirements:
     - glew
     - libpng
     - freetype
-    - msgpack-c
     - glm
-    - libglu # [linux]
+    - libglu                  # [linux]
     - {{ cdt('mesa-libgl') }} # [linux]
     - {{ cdt('libxxf86vm') }} # [linux]
   run:
     - python {{ python }}
     - {{ pin_compatible('numpy') }}
     - pyopengl
-    - pyqt
+    - pyqt >=5.13.1|<=5.12.1|5.9.2
     - glew
     - libpng
     - freetype
-    - msgpack-c
     - glm
 
 app:

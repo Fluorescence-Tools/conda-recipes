@@ -1,6 +1,6 @@
-git clone https://github.com/rcsb/mmtf-cpp.git mmtf-cpp
-mv mmtf-cpp/include/* $PREFIX/include/
-
+#git clone https://github.com/rcsb/mmtf-cpp.git mmtf-cpp
+#mv mmtf-cpp/include/* $PREFIX/include/
+#
 #git clone https://github.com/g-truc/glm.git glm_source
 #git clone https://github.com/msgpack/msgpack-c.git msgpack
 #
@@ -13,6 +13,6 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 if [ "$(uname)" == "Linux" ]; then
-  $PYTHON setup.py install --prefix="$PREFIX" --use-msgpackc=c++11 --no-libxml --no-glut
+  $PYTHON setup.py install --prefix="$PREFIX" --use-msgpackc=no --no-libxml --no-glut
 fi
 
