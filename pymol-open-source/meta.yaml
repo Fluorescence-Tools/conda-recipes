@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/schrodinger/{{ name }}/archive/{{ version }}.tar.gz
+  url: https://github.com/schrodinger/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: 62aa21fafd1db805c876f89466e47513809f8198395e1f00a5f5cc40d6f40ed0
 
 build:
@@ -48,7 +48,7 @@ requirements:
     - python {{ python }}
     - {{ pin_compatible('numpy') }}
     - pyopengl
-    - pyqt >=5.13.1|<=5.12.1|5.9.2
+    - pyqt >=5.13.1|<=5.12.1|5.9.2|5.6.2
     - glew
     - libpng
     - freetype
