@@ -7,4 +7,5 @@ REM move msgpack/include/* ./include/
 git clone https://github.com/g-truc/glm.git glm_source
 move glm_source/glm ./include
 
-"%PYTHON%" setup.py install --prefix="%PREFIX%" --use-msgpackc no --no-libxml
+REM
+"%PYTHON%" setup.py install --prefix="%PREFIX%" --use-msgpackc no --no-libxml --no-vmd-plugins --jobs 8

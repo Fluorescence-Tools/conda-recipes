@@ -1,5 +1,5 @@
 {% set name = "pymol-open-source" %}
-{% set version="2.3.0" %}
+{% set version="2.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/schrodinger/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 62aa21fafd1db805c876f89466e47513809f8198395e1f00a5f5cc40d6f40ed0
+  sha256: 5ede4ce2e8f53713c5ee64f5905b2d29bf01e4391da7e536ce8909d6b9116581
 
 build:
   number: 1
@@ -17,14 +17,12 @@ requirements:
     - python {{ python }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ pin_compatible('numpy') }}
+    - pyqt
     - pyopengl
-    - glew
     - libpng
+    - glew=2.0.0
     - freetype
-    - pyqt >=5.13.1|<=5.12.1|5.9.2
-    - glm
-    - boost 1.67.*
+    - glm=0.9.9.4
     - pkg-config                     # [linux]
     - mesalib                        # [linux]
     - libglu                         # [linux]
@@ -35,24 +33,22 @@ requirements:
     - {{ cdt('libxxf86vm') }}        # [linux]
   host:
     - python {{ python }}
-    - {{ pin_compatible('numpy') }}
     - pyopengl
-    - glew
-    - libpng
+    - glew=2.0.0
     - freetype
-    - glm
+    - glm=0.9.9.4
+    - libpng
     - libglu                  # [linux]
     - {{ cdt('mesa-libgl') }} # [linux]
     - {{ cdt('libxxf86vm') }} # [linux]
   run:
     - python {{ python }}
-    - {{ pin_compatible('numpy') }}
     - pyopengl
-    - pyqt >=5.13.1|<=5.12.1|5.9.2|5.6.2
-    - glew
+    - pyqt
     - libpng
+    - glew=2.0.0
     - freetype
-    - glm
+    - glm=0.9.9.4
 
 app:
   entry: pymol

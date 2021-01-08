@@ -9,10 +9,10 @@
 
 if [ "$(uname)" == "Darwin" ]; then
   rm $PREFIX/include/menu.h # necessary because of MacOS file system case insensitivity
-  $PYTHON setup.py install --prefix="$PREFIX" --use-msgpackc=no --no-libxml --no-glut
+  $PYTHON setup.py install --prefix="$PREFIX" --use-msgpackc=no --no-libxml --no-vmd-plugins
 fi
 
 if [ "$(uname)" == "Linux" ]; then
-  $PYTHON setup.py install --prefix="$PREFIX" --use-msgpackc=no --no-libxml --no-glut
+  $PYTHON setup.py install --prefix="$PREFIX" --use-msgpackc=no --no-libxml --no-vmd-plugins
 fi
 
